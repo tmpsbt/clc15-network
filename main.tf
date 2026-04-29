@@ -142,3 +142,14 @@ resource "aws_route_table" "tf_private_rt_1b" {
     Name = "tf-private-rt-1b"
   }
 }
+
+## Associa as tabelas de rotas privadas nas subnets privadas##
+resource "aws_route_table_association" "private_1a_association" {
+  subnet_id      = aws_subnet.subnet_private_1a.id
+  route_table_id = aws_route_table.tf_private_rt_1a.id
+}
+
+resource "aws_route_table_association" "private_1b_association" {
+  subnet_id      = aws_subnet.subnet_private_1b.id
+  route_table_id = aws_route_table.tf_private_rt_1b.id
+}
